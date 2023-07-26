@@ -1,5 +1,5 @@
 
-path: datasets/SYNTH2REAL_DET  # dataset root dir
+path: /dvlresearch/ocetintas/SYNTH2REAL_DET  # dataset root dir
 train: images/train  # train images (relative to 'path') 128 images
 val: images/val  # val images (relative to 'path') 128 images
 
