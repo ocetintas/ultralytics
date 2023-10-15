@@ -223,7 +223,7 @@ class BaseTrainer:
         self.amp = bool(self.amp)  # as boolean
         self.scaler = amp.GradScaler(enabled=self.amp)
         if world_size > 1:
-            self.model = DDP(self.model, device_ids=[RANK])
+            self.model = DDP(self.model, device_ids=[RANK], find_unused_parameters=True)
         # Check imgsz
         gs = max(int(self.model.stride.max() if hasattr(self.model, 'stride') else 32), 32)  # grid size (max stride)
         self.args.imgsz = check_imgsz(self.args.imgsz, stride=gs, floor=gs, max_dim=1)
@@ -444,7 +444,6 @@ class BaseTrainer:
         """
         if isinstance(self.model, torch.nn.Module):  # if model is loaded beforehand. No setup needed
             return
-
         model, weights = self.model, None
         ckpt = None
         if str(model).endswith('.pt'):

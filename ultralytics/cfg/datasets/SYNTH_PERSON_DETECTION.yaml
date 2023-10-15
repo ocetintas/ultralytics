@@ -1,5 +1,5 @@
 
-path: datasets/SYNTH_PERSON_DETECTION  # dataset root dir
+path: SYNTH_PERSON_DETECTION  # dataset root dir
 train: images/train  # train images (relative to 'path') 
 val: images/val  # val images (relative to 'path')
 
